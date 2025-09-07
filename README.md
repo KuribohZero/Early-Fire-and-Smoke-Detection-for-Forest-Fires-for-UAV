@@ -51,7 +51,8 @@ Wiring:
             -> RCA Shield (Capture Card Ground)
 
 Camera CVBS -> RCA Centre (Capture Card Video in)
-
+TX          -> RX (Raspberry Pi 5 Pin 10)
+RX          -> TX (Raspberry Pi 5 Pin 8)
 ---
 
 ## **Prerequisites**
@@ -112,6 +113,18 @@ hailomz compile yolov11n \
 
 
 ## **Code**
+
+The program works like this:
+
+- The camera 
+    - Dawn  -> Thermal Camera used majority of the time + Visual Camera every two minutes
+    - Day   -> Visual Camera used majority of the time + Thermal Camera every 10 minutes
+    - Dusk  -> Visual Camera used majority of the time + Thermal Camera every two minutes
+    - Night -> Thermal Camera used majority of the time + Visual Camera every 10 minutes
+
+- Once a fire is detected a image and a message on the location will be send from the pi to the computer
+- Operators confirms fire
+- Drone starts streaming the detected fire for both visual and thermal images
 
 ## **Additional Resources**
 
