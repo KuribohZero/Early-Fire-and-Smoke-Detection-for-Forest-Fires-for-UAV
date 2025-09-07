@@ -59,58 +59,7 @@ RX          -> TX (Raspberry Pi 5 Pin 8)
 
 ## **Installation**
 
-AI hat installation
-https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html
-
-sudo apt update && sudo apt full-upgrade
-sudo rpi-eeprom-update
-
-if firmware is older than 6 December
-
-sudo raspi-config
-Advanced Options -> Bootloader Version->Latest->Finish->Escape Key
-sudo rpi-eeprom-update -a
-sudo reboot
-
-PCIe Gen 3.0
-https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
-
-sudo raspi-config
-Advanced Options->PCIe Speed->Yes->Finish->Escape Key
-sudo reboot
-
-AI Kit and AI HAT+ Software
-https://www.raspberrypi.com/documentation/computers/ai.html
-
-sudo apt install hailo-all
-sudo reboot
-
 ## **Training Model**
-Based off: https://github.com/hailo-ai/hailo-apps-infra/blob/main/doc/developer_guide/retraining_example.md
-Hardware:
-- CPU: AMD Ryzen 5 2600 Six-Core Processor
-- GPU: AMD 7800 XT
-
-Installing Hailo AI Suite
-https://hailo.ai/developer-zone/documentation/2025-07-for-hailo-8-8l/?sp_referrer=suite/versions_compatibility.html
-sudo apt-get install python3.12-dev python3-tk graphviz libgraphviz-dev
-
-sudo apt-get install -y ffmpeg x11-utils libgstreamer-plugins-base1.0-dev python-gi-dev libgirepository1.0-dev libzmq3-dev
-
-
-
-yolo export model=/home/jugmentz/yolo_runs/fire_focus_run3/weights/best.pt imgsz=640 format=onnx opset=11
-
-hailomz compile yolov11n \
-  --ckpt /home/jugmentz/yolo_runs/fire_focus_run3/weights/best.onnx \
-  --hw-arch hailo8l \
-  --calib-path /home/jugmentz/Documents/dataset/Annotated/Test2/images \
-  --yaml /home/jugmentz/Documents/dataset/Annotated/YOLO_dataset3/dataset.yaml \
-  --labels-json /home/jugmentz/Documents/dataset/Annotated/labels.json \
-  --classes 2 \
-  --performance
-
-
 
 ## **Code**
 
