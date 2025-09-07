@@ -6,7 +6,8 @@ from typing import List
 
 #Image processing imports
 import cv2
-import picamera2
+import numpy as np
+#import picamera2
 import time
 
 #For importing hailo model
@@ -26,11 +27,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 # Initialize video captures for visual and thermal cameras
+"""
 visualCapture =picamera2()
 config = visualCapture.create_still_configuration(main={"size": (640, 480)})
 visualCapture.configure(config)
 visualCapture.start()
-
+"""
 thermalCapture =cv2.VideoCapture('/dev/video0')
 thermalCapture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 thermalCapture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)

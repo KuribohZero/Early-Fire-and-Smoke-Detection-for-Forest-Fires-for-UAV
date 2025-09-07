@@ -114,6 +114,19 @@ hailomz compile yolov11n \
 
 ## **Code**
 
+First Page
+Pi Connection
+Thermal Camera Check
+Visual Camera Check
+Drone Status:
+Last Update
+Battery Power
+Altitude
+GPS position
+Flight Time
+
+Send Test Image
+
 The program works like this:
 
 - The camera 

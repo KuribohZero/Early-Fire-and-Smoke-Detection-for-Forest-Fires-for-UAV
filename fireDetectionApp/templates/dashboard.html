@@ -1,9 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Item Details</title>
+    <title>Fire Detection Dashboard</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1><a href="{{ url_for('read_item', id=id) }}">Item ID: {{ id }}</a></h1>
+    <h1> Drone Status</h1>
+    {% if alerts %}
+        {% for alert in alerts %}
+            <div class="alert">
+                <p><b>ID:</b> {{alert.id}}</p>
+                <p><b>Time:</b> {{alert.timestamp}}</p>
+                <p><b>GPS:</b> {{alert.gps.lat}}, {{alert.gps.lon}}</p>
+                <p><b>Mode:</b> {{alert.mode}}</p>
+                <p><b>Status:</b> {{alert.status}}</p>
+                <img src="data:image/jpeg;base64,{{alert.image}}" alt="Detection">
+                <form action="/decision" method="post">
+                    <input type="hidden" name="alert_id" value="{{alert.id}}">
+                    <button class="confirm" name="action" value="confirmed">Confirm</button>
+                    <button class="reject" name="action" value="rejected">Reject</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No alerts yet.</p>
+    {% endif %}
 </body>
 </html>

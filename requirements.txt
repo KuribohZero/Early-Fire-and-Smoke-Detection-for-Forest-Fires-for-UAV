@@ -3,7 +3,6 @@ uvicorn[standard]
 jinja2
 paho-mqtt
 opencv-python
-picamera2
 degirum
 degirum_tools
 degirum_cli
