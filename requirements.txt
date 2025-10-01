@@ -1,7 +1,9 @@
-ultralytics
+fastapi[standard]
+uvicorn[standard]
+jinja2
+aiortc
+paho-mqtt
 opencv-python
-onnxruntime
-numpy
 degirum
 degirum_tools
 degirum_cli

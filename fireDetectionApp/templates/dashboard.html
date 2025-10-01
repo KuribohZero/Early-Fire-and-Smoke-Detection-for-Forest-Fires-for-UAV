@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<!--Setup html for tab title, meta tags and link to css-->
+<head>
+    <title>Fire Detection Dashboard test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/dashboard">About</a>
+            <a href="/history">Image History</a>
+            <a href="/Drone Feed">Drone Feed</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Operational Status">
+        <div class="container">
+        <h1>Operational Status</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, similique?</p>
+        <ul>    
+            <li>System Status: {{ system_status }}</li>
+            <li>Last Update: {{ operation_update}}</li>
+            <li>Connection Status: {{ connection_status }}</li>
+            <li>Visual Camera Status: {{ visual_status }}</li>
+            <li>Thermal Camera Status: {{ thermal_status }}</li>
+        </ul>
+        </div>
+        </section>
+
+        <section id="Drone Status">
+            <div class="container">
+            <h1>Drone Status</h1>
+            <ul>
+                <li>Drone Status: {{ drone_status }}</li>
+                <li> Last Update: {{ drone_update }}</li>
+                <li>Flight Time: {{ flight_time }}</li>
+                <li>Battery Level: {{ battery_level }}%</li>
+                <li>GPS Coordinates: Latitude {{ gps_latitude }}, Longitude {{ gps_longitude }}</li>
+                <li>Altitude: {{ altitude }} metres</li>
+                <li>Speed: {{ speed }} m/s</li>
+            </ul>
+            </div>
+        </section>
+        
+        <section id="Fire Detection">
+            <div class="container">
+            <h1>Live Image Update</h1>
+            <ul>
+                <li> Fire Detection Status: {{ fire_detection_status }}</li>
+                <li> Fire Detection Confidence: {{ fire_detection_confidence }}%</li>
+                <li> Fire Location: Latitude {{ fire_latitude }}, Longitude {{ fire_longitude }}</li>
+            </ul>
+            <p>Last Image Update: {{ image_update }}</p>
+            <p>Visual Image</p>
+            <img src="{{ url_for('static', path='/latest_image.jpg') }}" alt="Latest Image" width="600">
+            <p>Thermal Image</p>
+            <img src="{{ url_for('static', path='/latest_thermal.jpg') }}" alt="Latest Thermal Image" width="600">
+            </div>
+        </section>
+        <section id="Live Video Feed">
+        <h2 class="padding_buttom">🔴 Live stream</h2>
+        <div class="card">
+        <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+        <div style="text-align:center;">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn" disabled>Stop</button>
+        </div>
+        </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fire Detection App</p>
+    </footer>
+</body>
+</html>

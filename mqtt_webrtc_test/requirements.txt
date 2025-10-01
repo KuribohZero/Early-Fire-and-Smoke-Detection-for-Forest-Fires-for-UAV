@@ -1,0 +1,6 @@
+numpy==2.2.6
+paho-mqtt
+pymavlink
+aiortc
+mosquitto
+mosquitto-clients
