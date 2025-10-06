@@ -33,7 +33,7 @@
     {
       "OutputPostprocessType": "Detection",
       "PythonFile": "HailoDetectionYolo.py",
-      "OutputNumClasses": 91,
+      "OutputNumClasses": 2,
       "LabelsPath": "labels.json",
       "OutputConfThreshold": 0.30
     }
