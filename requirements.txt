@@ -1,5 +1,7 @@
 numpy==2.2.6
 opencv-python
+pymavlink
+picamera2
 degirum
 degirum_tools
 degirum_cli
