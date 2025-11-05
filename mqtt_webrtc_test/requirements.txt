@@ -1,0 +1,4 @@
+paho-mqtt
+pymavlink
+mosquitto
+mosquitto-clients
