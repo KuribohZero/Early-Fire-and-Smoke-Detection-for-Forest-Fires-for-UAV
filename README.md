@@ -51,67 +51,45 @@ Wiring:
             -> RCA Shield (Capture Card Ground)
 
 Camera CVBS -> RCA Centre (Capture Card Video in)
-
+TX          -> RX (Raspberry Pi 5 Pin 10)
+RX          -> TX (Raspberry Pi 5 Pin 8)
 ---
 
 ## **Prerequisites**
 
 ## **Installation**
 
-AI hat installation
-https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html
-
-sudo apt update && sudo apt full-upgrade
-sudo rpi-eeprom-update
-
-if firmware is older than 6 December
-
-sudo raspi-config
-Advanced Options -> Bootloader Version->Latest->Finish->Escape Key
-sudo rpi-eeprom-update -a
-sudo reboot
-
-PCIe Gen 3.0
-https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
-
-sudo raspi-config
-Advanced Options->PCIe Speed->Yes->Finish->Escape Key
-sudo reboot
-
-AI Kit and AI HAT+ Software
-https://www.raspberrypi.com/documentation/computers/ai.html
-
-sudo apt install hailo-all
-sudo reboot
-
 ## **Training Model**
-Based off: https://github.com/hailo-ai/hailo-apps-infra/blob/main/doc/developer_guide/retraining_example.md
-Hardware:
-- CPU: AMD Ryzen 5 2600 Six-Core Processor
-- GPU: AMD 7800 XT
-
-Installing Hailo AI Suite
-https://hailo.ai/developer-zone/documentation/2025-07-for-hailo-8-8l/?sp_referrer=suite/versions_compatibility.html
-sudo apt-get install python3.12-dev python3-tk graphviz libgraphviz-dev
-
-sudo apt-get install -y ffmpeg x11-utils libgstreamer-plugins-base1.0-dev python-gi-dev libgirepository1.0-dev libzmq3-dev
-
-
-
-yolo export model=/home/jugmentz/yolo_runs/fire_focus_run3/weights/best.pt imgsz=640 format=onnx opset=11
-
-hailomz compile yolov11n \
-  --ckpt /home/jugmentz/yolo_runs/fire_focus_run3/weights/best.onnx \
-  --hw-arch hailo8l \
-  --calib-path /home/jugmentz/Documents/dataset/Annotated/Test2/images \
-  --yaml /home/jugmentz/Documents/dataset/Annotated/YOLO_dataset3/dataset.yaml \
-  --labels-json /home/jugmentz/Documents/dataset/Annotated/labels.json \
-  --classes 2 \
-  --performance
-
-
 
 ## **Code**
+docker rm -f firedetectionappcontainer \
+docker build -t firedetectionapp .
+docker run -d --name firedetectionappcontainer -p 8000:8000 firedetectionapp
+
+First Page
+Pi Connection
+Thermal Camera Check
+Visual Camera Check
+Drone Status:
+Last Update
+Battery Power
+Altitude
+GPS position
+Flight Time
+
+Send Test Image
+
+The program works like this:
+
+- The camera 
+    - Dawn  -> Thermal Camera used majority of the time + Visual Camera every two minutes
+    - Day   -> Visual Camera used majority of the time + Thermal Camera every 10 minutes
+    - Dusk  -> Visual Camera used majority of the time + Thermal Camera every two minutes
+    - Night -> Thermal Camera used majority of the time + Visual Camera every 10 minutes
+
+- Once a fire is detected a image and a message on the location will be send from the pi to the computer
+- Operators confirms fire
+- Drone starts streaming the detected fire for both visual and thermal images
 
 ## **Additional Resources**
 

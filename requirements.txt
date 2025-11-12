@@ -1,7 +1,7 @@
-ultralytics
+numpy==2.2.6
 opencv-python
-onnxruntime
-numpy
+pymavlink
+picamera2
 degirum
 degirum_tools
 degirum_cli
