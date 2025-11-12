@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
 # ------------------------------------------------------------
-# fire_monitor_on_boot.py
-# Runs on boot
-# - 10s camera warm-up
-# - Loads YOLO model on Hailo for visual inference
-# - Records visual (with inference overlay) and thermal video
-# - Saves new MP4 files every 60 seconds
-# - Folder is named with date + start time
-# ------------------------------------------------------------
 
 import cv2
 import os
